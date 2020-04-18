@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Game</title>
+{% endblock %}
+
+{% block body %}
+<br>
+<main role="main">
+<div class="jumbotron">
+  <div class="col-sm-8 mx-auto">
+
+    <h2>
+      {{ cities[0].get('city_name') }} <i>or</i> {{ cities[1].get('city_name') }}
+    </h2>
+
+    <h3>
+      Which city is more <b>{{ direction }}</b>?
+    </h3>
+
+    <div class="form-group">
+      <form action="/answer/" method="POST">
+    <select class="form-control" name="cities_form" id="cities_form">
+      <option>{{ cities[0].get('city_name') }}</option>
+      <option>{{ cities[1].get('city_name') }}</option>
+      </select>
+        <br>
+        <input style="display:inline" class="btn btn-primary float-left" type="submit" value="Check">
+        <input type="hidden" id="right_answer" name="right_answer" value="{{ right_city_id }}">
+        <input type="hidden" id="wrong_answer" name="wrong_answer" value="{{ wrong_city_id }}">
+        <input type="hidden" id="drawn_direction" name="drawn_direction" value="{{ direction }}">
+      </form>
+    </div>
+    <br>
+  </div>
+</div>
+</main>
+{% endblock %}

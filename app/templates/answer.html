@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Answer</title>
+{% endblock %}
+
+{% block body %}
+<br>
+<main role="main">
+<div class="jumbotron">
+  <div class="col-sm-8 mx-auto">
+      <div id="answer_color">
+        {% if user_answer == right_city_return[0].get('City') %}
+            <h2><font color="green">You're right!</font></h2>
+        {% else %}
+            <h2><font color="red">Nope, you're wrong...</font></h2>
+        {% endif %}
+      </div>
+        <br>
+        <h3>
+          Question was: <i>which city lies more <b>{{ drawn_direction }}</b></i>?
+        </h3>
+          <h4>Your answer:
+          <font id="user_answer" size=6>{{ user_answer }}</font>
+          </h4>
+        <hr>
+        <table align="center" style="margin: 3px; border: 1px solid black; text-align: center">
+            <tr style="background-color: #663399">
+                <th style="color: white">City</th>
+                {% if drawn_direction in ['North', 'South'] %}
+                    <th style="color: #32CD32">Latitude</th>
+                    <th style="color: white">Longitude</th>
+                {% else %}
+                    <th style="color: white">Latitude</th>
+                    <th style="color: #32CD32">Longitude</th>
+                {% endif %}
+                <th style="color: white">Country</th>
+                <th style="color: white">Continent</th>
+            </tr>
+            <tr style="background-color: aliceblue">
+                <td style="padding: 1rem">{{ right_city_return[0].get('City') }}</td>
+                <td style="padding: 1rem">{{ right_city_return[0].get('Latitude') }}</td>
+                <td style="padding: 1rem">{{ right_city_return[0].get('Longitude') }}</td>
+                <td style="padding: 1rem">{{ right_city_return[0].get('Country') }}</td>
+                <td style="padding: 1rem">{{ right_city_return[0].get('Continent') }}</td>
+            </tr>
+            <tr style="background-color: #c2d4e4">
+                <td style="padding: 1rem">{{ wrong_city_return[0].get('City') }}</td>
+                <td style="padding: 1rem">{{ wrong_city_return[0].get('Latitude') }}</td>
+                <td style="padding: 1rem">{{ wrong_city_return[0].get('Longitude') }}</td>
+                <td style="padding: 1rem">{{ wrong_city_return[0].get('Country') }}</td>
+                <td style="padding: 1rem">{{ wrong_city_return[0].get('Continent') }}</td>
+            </tr>
+        </table>
+        <br>
+        <p>
+          <a class="btn btn-warning" href="/game" role="button">Play Again</a>
+        </p>
+      </div>
+</div>
+</main>
+{% endblock %}
