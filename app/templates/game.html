@@ -11,7 +11,7 @@
   <div class="col-sm-8 mx-auto">
 
     <h2>
-      {{ cities[0].get('city_name') }} <i>or</i> {{ cities[1].get('city_name') }}
+      {{ cities[0][1] }} <i>or</i> {{ cities[1][1] }}
     </h2>
 
     <h3>
@@ -19,10 +19,10 @@
     </h3>
 
     <div class="form-group">
-      <form action="/answer/" method="POST">
+      <form action="/answer" method="POST">
     <select class="form-control" name="cities_form" id="cities_form">
-      <option>{{ cities[0].get('city_name') }}</option>
-      <option>{{ cities[1].get('city_name') }}</option>
+      <option>{{ cities[0][1] }}</option>
+      <option>{{ cities[1][1] }}</option>
       </select>
         <br>
         <input style="display:inline" class="btn btn-primary float-left" type="submit" value="Check">

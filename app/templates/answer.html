@@ -10,7 +10,7 @@
 <div class="jumbotron">
   <div class="col-sm-8 mx-auto">
       <div id="answer_color">
-        {% if user_answer == right_city_return[0].get('City') %}
+        {% if user_answer == right_city_return[0][0] %}
             <h2><font color="green">You're right!</font></h2>
         {% else %}
             <h2><font color="red">Nope, you're wrong...</font></h2>
@@ -38,18 +38,18 @@
                 <th style="color: white">Continent</th>
             </tr>
             <tr style="background-color: aliceblue">
-                <td style="padding: 1rem">{{ right_city_return[0].get('City') }}</td>
-                <td style="padding: 1rem">{{ right_city_return[0].get('Latitude') }}</td>
-                <td style="padding: 1rem">{{ right_city_return[0].get('Longitude') }}</td>
-                <td style="padding: 1rem">{{ right_city_return[0].get('Country') }}</td>
-                <td style="padding: 1rem">{{ right_city_return[0].get('Continent') }}</td>
+                <td style="padding: 1rem">{{ right_city_return[0][0] }}</td>
+                <td style="padding: 1rem">{{ right_city_return[0][1] }}</td>
+                <td style="padding: 1rem">{{ right_city_return[0][2] }}</td>
+                <td style="padding: 1rem">{{ right_city_return[0][3] }}</td>
+                <td style="padding: 1rem">{{ right_city_return[0][4] }}</td>
             </tr>
             <tr style="background-color: #c2d4e4">
-                <td style="padding: 1rem">{{ wrong_city_return[0].get('City') }}</td>
-                <td style="padding: 1rem">{{ wrong_city_return[0].get('Latitude') }}</td>
-                <td style="padding: 1rem">{{ wrong_city_return[0].get('Longitude') }}</td>
-                <td style="padding: 1rem">{{ wrong_city_return[0].get('Country') }}</td>
-                <td style="padding: 1rem">{{ wrong_city_return[0].get('Continent') }}</td>
+                <td style="padding: 1rem">{{ wrong_city_return[0][0] }}</td>
+                <td style="padding: 1rem">{{ wrong_city_return[0][1] }}</td>
+                <td style="padding: 1rem">{{ wrong_city_return[0][2] }}</td>
+                <td style="padding: 1rem">{{ wrong_city_return[0][3] }}</td>
+                <td style="padding: 1rem">{{ wrong_city_return[0][4] }}</td>
             </tr>
         </table>
         <br>
