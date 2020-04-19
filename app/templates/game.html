@@ -9,15 +9,12 @@
 <main role="main">
 <div class="jumbotron">
   <div class="col-sm-8 mx-auto">
-
     <h2>
       {{ cities[0][1] }} <i>or</i> {{ cities[1][1] }}
     </h2>
-
     <h3>
       Which city is more <b>{{ direction }}</b>?
     </h3>
-
     <div class="form-group">
       <form action="/answer" method="POST">
     <select class="form-control" name="cities_form" id="cities_form">
@@ -29,6 +26,7 @@
         <input type="hidden" id="right_answer" name="right_answer" value="{{ right_city_id }}">
         <input type="hidden" id="wrong_answer" name="wrong_answer" value="{{ wrong_city_id }}">
         <input type="hidden" id="drawn_direction" name="drawn_direction" value="{{ direction }}">
+        <input type="hidden" id="game_type" name="game_type" value="{{ game_type }}">
       </form>
     </div>
     <br>
