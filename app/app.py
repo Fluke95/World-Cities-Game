@@ -1,10 +1,10 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_from_directory
 from flask_sqlalchemy import SQLAlchemy
 from socket import gethostname
 import numpy as np
 import random
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder="static", template_folder="templates")
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///world_cities_db.db'
 db = SQLAlchemy(app)
 
@@ -81,19 +81,6 @@ def index():
     return render_template('index.html')
 
 # ----------------------------------------------------------------------------------------------------------------------
-# @app.route('/game', methods=['GET', 'POST'])
-# def game():
-#
-#     coordinate, direction = get_direction_and_coord()
-#     cities = get_random_cities(coordinate)
-#     right_city_id = right_city_answer(direction, cities)[0][0]
-#     wrong_city_id = [city[0] for city in cities if city[0] != right_city_id][0]
-#     return render_template('game.html', cities=cities, direction=direction,
-#                            right_city_id=right_city_id,
-#                            wrong_city_id=wrong_city_id,
-#                            content_type='application/json')
-
-# ----------------------------------------------------------------------------------------------------------------------
 @app.route('/europe/game', methods=['GET', 'POST'])
 def game_europe():
 
@@ -159,6 +146,11 @@ def dataset():
 @app.route('/about', methods=['GET'])
 def about():
     return render_template('about.html')
+
+# ----------------------------------------------------------------------------------------------------------------------
+@app.route('/sitemap.xml', methods=['GET'])
+def sitemap():
+    return send_from_directory(app.static_folder, request.path[1:])
 
 # ----------------------------------------------------------------------------------------------------------------------
 if __name__ == "__main__":
