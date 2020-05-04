@@ -163,11 +163,6 @@ def give_answer():
                            previous_path=previous_path)
 
 # ----------------------------------------------------------------------------------------------------------------------
-@app.route('/dataset', methods=['GET'])
-def dataset():
-    return render_template('dataset.html')
-
-# ----------------------------------------------------------------------------------------------------------------------
 @app.route('/about', methods=['GET'])
 def about():
     return render_template('about.html')
